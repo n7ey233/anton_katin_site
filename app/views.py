@@ -32,8 +32,10 @@ def main(request):
 def create_msg(msg_type, obje):
     #1 == call
     if msg_type == 1:
-        obje
-        text = 'пришло уведомление заявки на звонок имя телефон примечание'
+        name = obje.name
+        tel_num = obje.tel_num
+        commentary = obje.name
+        text = 'пришло уведомление заявки на звонок имя телефон примечание\n'
     #2 == order part
     elif msg_type == 2:
         text = 'пришло уведомление заявки на запчасть имя телефон запчасть юрл на просмотр'
@@ -53,11 +55,11 @@ def order_call(request):
         if form.is_valid():
             obje = form.save(commit=False)
             obje.save()
-            msg = create_msg(2, obje)
+            msg = create_msg(1, obje)
             send_notification_telegram(msg)
         else:
             None
-            #redirect na error form.html
+            #redirect na error_form.html
     return redirect('applied')
 
 def order_part(request):
