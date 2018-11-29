@@ -1,4 +1,5 @@
 import requests
+import json
 #https://www.forsomedefinition.com/automation/creating-telegram-bot-notifications/
 def get_id_v_telege():
     r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
