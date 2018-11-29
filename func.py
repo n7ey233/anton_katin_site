@@ -27,7 +27,8 @@ def send_notification_telegram(text):
         requests.get(url)
     else:
         None
-if False:
+if True:
+#if False:
     print(get_id_v_telege)
     return None
 else:
