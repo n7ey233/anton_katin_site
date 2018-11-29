@@ -36,6 +36,9 @@ def create_msg(msg_type, obje):
         name = obje.name
         tel_num = obje.tel_num
         commentary = obje.name
+        print(name)
+        print(tel_num)
+        print(commentary)
         text = 'пришло уведомление заявки на звонок имя телефон примечание'
     #2 == order part
     elif msg_type == 2:
