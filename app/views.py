@@ -32,10 +32,11 @@ def main(request):
 def create_msg(msg_type, obje):
     #1 == call
     if msg_type == 1:
+        # %0A = breakline <br> \n
         name = obje.name
         tel_num = obje.tel_num
         commentary = obje.name
-        text = 'пришло уведомление заявки на звонок имя телефон примечание\n'
+        text = 'пришло уведомление заявки на звонок имя телефон примечание%0A'
     #2 == order part
     elif msg_type == 2:
         text = 'пришло уведомление заявки на запчасть имя телефон запчасть юрл на просмотр'
