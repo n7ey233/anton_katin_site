@@ -18,7 +18,4 @@ def send_notification_telegram(text):
     #r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
     
     #r = requests.get(url)
-msg = create_msg(2)
-print(msg)
-
-#send_notification_telegram(msg)
+send_notification_telegram(create_msg(2))
