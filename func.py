@@ -30,7 +30,6 @@ def send_notification_telegram(text):
 if True:
 #if False:
     print(get_id_v_telege)
-    return None
 else:
     msg = create_msg(2)
     print(msg)
