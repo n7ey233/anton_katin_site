@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+import requests
 
 from .models import *
 from .forms import *
@@ -53,5 +54,8 @@ def applied(request):
     return render(request, return_page, {})
 #404
 
+
+def test(request):
+    r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getme')
 #прием заявок на звонок, на запчасть
 # Create your views here.

@@ -12,18 +12,6 @@ urlpatterns =[
     url(r'^order_part$', views.order_part, name='order_part'),
     #applied form url, *tipo zayavka prinyata v obrabotku
     url(r'^applied$', views.applied, name='applied'),
-    #sozdaniye abonenta
-    #url(r'^abonent/create$', views.abonent_create, name='abonent_create'),
-    #prosmotr
-    #url(r'^abonent/view$', views.abonent_view, name='abonent_view'),
-    #redaktirovaniye
-    #url(r'^abonent/edit$', views.abonent_edit, name='abonent_edit'),
-    #poisk abonenta
-    #url(r'^abonent/search$', views.abonent_search, name='abonent_search'),
-
-    #dobavleniye remarki
-    #url(r'^add_remark$', views.add_remark, name='add_remark'),
-    #dobavleniye excel fila
-    #url(r'^add_excel$', views.add_excel, name='add_excel'),
-    #url(r'^receive_data$', views.receive_data, name='receive_data'),
+    #test
+    url(r'^test$', views.test, name='test'),
 ]
