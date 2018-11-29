@@ -29,9 +29,10 @@ def main(request):
         'show_form': show_form,
         })
 
-def create_msg(msg_type):
+def create_msg(msg_type, obje):
     #1 == call
     if msg_type == 1:
+        obje
         text = 'пришло уведомление заявки на звонок имя телефон примечание'
     #2 == order part
     elif msg_type == 2:
@@ -40,12 +41,11 @@ def create_msg(msg_type):
 
 def send_notification_telegram(text):
     id_telegi = '405347178' #id v telege dlya otpravki
-    telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg'
+    telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg'#token telegi
     url = "https://api.telegram.org/bot"+telega_token+"/sendMessage?chat_id="+id_telegi+"&text="+text
     #r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
+    #obrazec
     r = requests.get(url)
-    print(r.text)
-
 
 def order_call(request):
     if request.method == "POST":
@@ -53,7 +53,8 @@ def order_call(request):
         if form.is_valid():
             obje = form.save(commit=False)
             obje.save()
-            send_notification_telegram(create_msg(1))
+            msg = create_msg(2, obje)
+            send_notification_telegram(msg)
         else:
             None
             #redirect na error form.html
@@ -65,7 +66,8 @@ def order_part(request):
         if form.is_valid():
             obje = form.save(commit=False)
             obje.save()
-            send_notification_telegram(create_msg(2))
+            msg = create_msg(2, obje)
+            send_notification_telegram(msg)
         else:
             None
             #redirect na error form.html
