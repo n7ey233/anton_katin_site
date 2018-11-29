@@ -56,6 +56,10 @@ def applied(request):
 
 
 def test(request):
-    r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getme')
+    step = 1
+    if step == 1:
+        r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getme')
+    elif step == 2:
+        None
 #прием заявок на звонок, на запчасть
 # Create your views here.
