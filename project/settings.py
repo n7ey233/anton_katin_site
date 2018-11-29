@@ -25,7 +25,7 @@ SECRET_KEY = '-@xf882li3g_x28_oqt5(=fj8b$*2*9*$hm3(17g^#(klc7pgg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['interpartbot1.pythonanywhere.com',]
 
 
 # Application definition
