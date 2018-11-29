@@ -81,7 +81,7 @@ def test(request):
         r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
         fulljson = json.loads(r.text)
         r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
-        https://api.telegram.org/bot$TOKEN/
+        #https://api.telegram.org/bot$TOKEN/
          #poluchaemiy object
         #'{"ok":true,"result":[{"update_id":999597240,\n"message":{"message_id":1,"from":{"id":405347178,"is_bot":false,"first_name":"Vladislav","language_co
         #de":"ru"},"chat":{"id":405347178,"first_name":"Vladislav","type":"private"},"date":1543473969,"text":"/start","entities":[{"offset":0,"length":6,"ty
