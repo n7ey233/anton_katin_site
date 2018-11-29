@@ -5,7 +5,9 @@ import json
 from .models import *
 from .forms import *
 
-
+#moi id telegi '405347178'
+#id telegi antona '548383851'
+id_telegi = '405347178' #id v telege dlya otpravki
 def main(request):
     #post_list = post.objects.all().order_by('-created_date')
     nav_bar = 1
@@ -46,9 +48,6 @@ def create_msg(msg_type, obje):
     return text
 
 def send_notification_telegram(text):
-    #moi id telegi '405347178'
-    #id telegi antona '548383851'
-    id_telegi = '405347178' #id v telege dlya otpravki
     telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg' #token telegi
     case = 1
     if case == 1:
