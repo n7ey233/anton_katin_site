@@ -39,10 +39,10 @@ def create_msg(msg_type, obje):
         text = 'пришло уведомление заявки на звонок. имя:'+str(name)+' телефон:'+str(tel_num)+' примечание:'+str(commentary)
     #2 == order part
     elif msg_type == 2:
-        name = obje.name
         tel_num = obje.tel_num
-        commentary = obje.parts
-        text = 'пришло уведомление заявки на запчасть имя:'+str(name)+' телефон:'+str(tel_num)+' Необходимые запчасти:'+str(commentary)+'url?'
+        email = obje.email
+        parts = obje.parts
+        text = 'пришло уведомление заявки на запчасть Телефон:'+str(tel_num)+',E-mail:'+str(email)+' Необходимые запчасти:'+str(parts)+'url?'
 
     return text
 

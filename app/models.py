@@ -47,11 +47,11 @@ class order_part(models.Model):
     #Представьтесь (Необязательно)
     place = models.CharField(max_length=128, blank=True, verbose_name='Город')
     #Укажите город доставки
-    tel_num = models.CharField(max_length=128, blank=False, verbose_name='Телефон')
+    tel_num = models.CharField(max_length=128, blank=False, verbose_name='Телефон*')
     #Укажите номер телефона
-    email = models.EmailField(max_length=254, blank = False, verbose_name='Электронная почта (E-mail)')
+    email = models.EmailField(max_length=254, blank = False, verbose_name='Электронная почта (E-mail)*')
     #Укажите ВЕРНЫЙ адрес
-    parts = models.CharField(max_length=128, blank=False, verbose_name='Необходимые запчасти')
+    parts = models.CharField(max_length=128, blank=False, verbose_name='Необходимые запчасти*')
     #Укажите список необходимых запчастей (например, двигатель в сборе)
     class Meta:
         ordering = ['-created_date']
