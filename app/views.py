@@ -28,12 +28,32 @@ def main(request):
         'order_callForm': order_callForm(),
         'show_form': show_form,
         })
+
+def create_msg(msg_type):
+    #1 == call
+    if msg_type == 1:
+        text = 'пришло уведомление заявки на звонок имя телефон примечание'
+    #2 == order part
+    elif msg_type == 2:
+        text = 'пришло уведомление заявки на запчасть имя телефон запчасть юрл на просмотр'
+    return text
+
+def send_notification_telegram(text):
+    id_telegi = '405347178' #id v telege dlya otpravki
+    telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg'
+    url = "https://api.telegram.org/bot"+telega_token+"/sendMessage?chat_id="+id_telegi+"&text="+text
+    #r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
+    r = requests.get(url)
+    print(r.text)
+
+
 def order_call(request):
     if request.method == "POST":
         form = order_callForm(request.POST)
         if form.is_valid():
             obje = form.save(commit=False)
             obje.save()
+            send_notification_telegram(create_msg(1))
         else:
             None
             #redirect na error form.html
@@ -45,6 +65,7 @@ def order_part(request):
         if form.is_valid():
             obje = form.save(commit=False)
             obje.save()
+            send_notification_telegram(create_msg(2))
         else:
             None
             #redirect na error form.html
@@ -53,9 +74,6 @@ def applied(request):
     return_page = 'app/applied.html'
     return render(request, return_page, {})
 #404
-def send_notification_telegram(request):
-    telega_num = 405347178 #nomer chata telegrama
-
 def test(request):
     #init func
     step = 1
