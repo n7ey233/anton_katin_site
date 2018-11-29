@@ -35,24 +35,28 @@ def create_msg(msg_type, obje):
         # %0A = breakline <br> \n
         name = obje.name
         tel_num = obje.tel_num
-        commentary = obje.name
-        print(name)
-        print(tel_num)
-        print(commentary)
-        text = 'пришло уведомление заявки на звонок имя телефон примечание'
+        commentary = obje.commentary
+        text = 'пришло уведомление заявки на звонок. имя:'+str(name)+' телефон:'+str(tel_num)+' примечание:'+str(commentary)
     #2 == order part
     elif msg_type == 2:
-        text = 'пришло уведомление заявки на запчасть имя телефон запчасть юрл на просмотр'
+        name = obje.name
+        tel_num = obje.tel_num
+        commentary = obje.parts
+        text = 'пришло уведомление заявки на запчасть имя:'+str(name)+' телефон:'+str(tel_num)+' Необходимые запчасти:'+str(commentary)+'url?'
+
     return text
 
 def send_notification_telegram(text):
     id_telegi = '405347178' #id v telege dlya otpravki
-    telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg'#token telegi
-    url = "https://api.telegram.org/bot"+telega_token+"/sendMessage?chat_id="+id_telegi+"&text="+text
-    #r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
-    #obrazec
-    r = requests.get(url)
-
+    telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg' #token telegi
+    case = 1
+    if case == 1:
+        url = "https://api.telegram.org/bot"+telega_token+"/sendMessage?chat_id="+id_telegi+"&text="+text
+        #r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
+        #obrazec
+        requests.get(url)
+    else:
+        None
 def order_call(request):
     if request.method == "POST":
         form = order_callForm(request.POST)
@@ -88,13 +92,5 @@ def test(request):
     if step == 1:
         r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
         fulljson = json.loads(r.text)
-        r = requests.get('https://api.telegram.org/bot700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg/getUpdates')
-        #https://api.telegram.org/bot$TOKEN/
-         #poluchaemiy object
-        #'{"ok":true,"result":[{"update_id":999597240,\n"message":{"message_id":1,"from":{"id":405347178,"is_bot":false,"first_name":"Vladislav","language_co
-        #de":"ru"},"chat":{"id":405347178,"first_name":"Vladislav","type":"private"},"date":1543473969,"text":"/start","entities":[{"offset":0,"length":6,"ty
-        #pe":"bot_command"}]}}]}'
-    elif step == 2:
-        None
 #прием заявок на звонок, на запчасть
 # Create your views here.
