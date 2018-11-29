@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <form method="POST" class="post-form">
+      {%if page_title_prefix != 'Создание'%}<button type="submit" name="deleteit" value="true" class="save btn btn-danger pull-right">Удалить</button>{%endif%}
+    <h3>{{page_title_prefix}}: {{page_title}}{%if page_title_prefix != 'Создание'%} - {{form.instance}}{%endif%}</h3> 
+    <hr>
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <hr/>
+        <button type="submit" class="save btn btn-default pull-right">{%if page_type == 'create'%}Создать{%else%}Сохранить{%endif%}</button>
+    </form>
+</div>
+{%endblock%}

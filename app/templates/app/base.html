@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}n7ey233</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="{% static 'js/ie8-responsive-file-warning.js' %}"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{% static 'js/html5shiv.js' %}"></script>
+      <script src="{% static 'js/respond.min.js' %}"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- Fixed navbar 
+  <nav class="navbar navbar-default " style="margin-bottom: 0px;">
+  </nav> -->
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Открыть панель навигации</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li {%if nav_bar == 1%}class="active"{%endif%} ><a href="{% url 'main'%}">Главная</a></li>
+            <li {%if nav_bar == 2%}class="active"{%endif%} ><a href="{% url 'main'%}?q=Доставка">Доставка</a></li>
+            <li {%if nav_bar == 4%}class="active"{%endif%} ><a href="{% url 'main'%}?q=Контакты">Контакты</a></li>
+            <li {%if nav_bar == 5%}class="active"{%endif%} ><a href="{% url 'main'%}?q=Полезная_информация">Полезная информация</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a data-toggle="modal" data-target="#order_call">Заказать звонок</a></li>
+          <!-- Modal -->
+            <div class="modal fade" id="order_call" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Заказать звонок</h4>
+                  </div>
+                  <div class="modal-body">
+                      <form method="POST" action="{% url 'order_call'%}">
+                          {% csrf_token %}
+                          {{order_callForm.as_p}}
+                      
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-default my-1">Отправить</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end modal --> 
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="container" style="padding-top: 0px;">
+              <div class="row">
+        {% if show_form %}
+        <div class="hidden-xs hidden-sm col-md-3">
+          <h3>Поиск запчастей</h3>
+          <form method="POST" action="{% url 'order_part'%}">
+          {% csrf_token %}
+          {{order_partForm.as_p}}
+          <button type="submit" class="btn btn-default btn-lg btn-block">Отправить</button>
+          </form>
+          </div>
+        <div class="col-xs-12 col-sm-9 col-md-9">
+        {% endif %}
+    {% block content %}
+    {% endblock %}
+        {% if show_form %}
+        </div>
+        {% endif %}
+      </div>  
+      <br>
+      <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+      <br>
+      <p style="text-align: left;"><span style="color: rgb(254, 232, 37); font-size: 20px; text-align: left;">Контакты</span><br></p><br><p>г. Владивосток, ул. Выселковая, 39<br><a href="/89644464101">Телефон 8(964)4464101</a><br><br>
+      <a href="https://api.whatsapp.com/send?phone=79644464101&amp;text=Здравтсвуйте,%20мне%20нужны%20запчасти%20на%20автомобиль">
+      <img src="http://japanautogid.ru/templates/jp4/images/wa.png" width="30px"> +7(964)4464101</a><br>
+      <a href="viber://chat?number=79644464101">
+      <img src="http://japanautogid.ru/templates/jp4/images/vb.png" width="30px"> +7(964)4464101</a><br>
+      <a href="https://t.me/japanautogid_ru"> <img src="http://japanautogid.ru/templates/jp4/images/sms.png" width="30px"> +7(964)4464101</a><br><br>
+Почта: <a href="mailto:parts@japanautogid.ru">parts@japanautogid.ru</a>
+      </p>
+      <p align="right">
+      </p>
+        </div>
+        <div class="hidden-xs hidden-sm col-md-6">
+          <div class="art-layout-cell layout-item-1">
+            <br>
+            <p><span style="font-size: 20px; color: #FEE825;">Информация</span></p><br>
+            <p><a href="http://japanautogid.ru/">Главная</a></p><p><a href="/katalog-zapchastej">Каталог запчастей</a></p>
+            <p><a href="http://japanautogid.ru/dostavka">Доставка</a></p><p><a href="http://japanautogid.ru/garantii">Гарантии</a></p>
+            <p><a href="http://japanautogid.ru/avtomobili-iz-yaponii">Автомобили из Японии</a></p><p><a href="http://japanautogid.ru/kontakty">Контакты</a></p>
+            <p><a href="http://japanautogid.ru/poleznaya-informatsiya">Полезная информация</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
+  </body>
+</html>
