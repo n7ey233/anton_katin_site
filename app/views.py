@@ -42,8 +42,7 @@ def create_msg(msg_type, obje):
         tel_num = obje.tel_num
         email = obje.email
         parts = obje.parts
-        text = 'пришло уведомление заявки на запчасть Телефон: '+str(tel_num)+' , E-mail: '+str(email)+' Необходимые запчасти:'+str(parts)+'url?'
-
+        text = 'пришло уведомление заявки на запчасть Телефон: '+str(tel_num)+' , E-mail: '+str(email)+' Необходимые запчасти:'+str(parts)+' ##url?'
     return text
 
 def send_notification_telegram(text):
@@ -84,7 +83,9 @@ def order_part(request):
     return redirect('applied')
 def applied(request):
     return_page = 'app/applied.html'
-    return render(request, return_page, {})
+    return render(request, return_page, {
+    'order_callForm': order_callForm(),
+    })
 #404
 def test(request):
     #init func
