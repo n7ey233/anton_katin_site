@@ -6,9 +6,7 @@ def get_id_v_telege():
     #json
     #r = requests.post(url, json=send_dict)
 #esli nado poluchit' id dlya otpravki
-if False:
-    print(get_id_v_telege)
-    return None
+
 def create_msg(msg_type):
     #1 == call
     if msg_type == 1:
@@ -29,7 +27,10 @@ def send_notification_telegram(text):
         requests.get(url)
     else:
         None
-
-msg = create_msg(2)
-print(msg)
-send_notification_telegram(msg)
+if False:
+    print(get_id_v_telege)
+    return None
+else:
+    msg = create_msg(2)
+    print(msg)
+    send_notification_telegram(msg)

@@ -46,6 +46,8 @@ def create_msg(msg_type, obje):
     return text
 
 def send_notification_telegram(text):
+    #moi id telegi '405347178'
+    #id telegi antona 
     id_telegi = '405347178' #id v telege dlya otpravki
     telega_token = '700264978:AAG6PdQSBamU5nREeT8c07fUzoz5EzNp6Pg' #token telegi
     case = 1
